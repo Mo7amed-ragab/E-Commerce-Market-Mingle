@@ -1,0 +1,19 @@
+/* master */
+/* RTL adjustments */
+body {
+    text-align: right;
+}
+
+.dropdown-menu {
+    text-align: right;
+    direction: rtl;
+}
+
+.float-md-left {
+    float: right !important;
+}
+
+.ml-md-auto {
+    margin-left: auto;
+    margin-right: 0 !important;
+}

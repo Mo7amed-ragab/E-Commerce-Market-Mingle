@@ -1,0 +1,94 @@
+.navbar {
+    background-color: #343a40; /* لون الخلفية */
+    border-bottom: 2px solid #ffcc00; /* لون الحدود السفلى */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* حجم الخط */
+    color: #ffcc00; /* لون النص */
+}
+
+.nav-link {
+    color: #ffffff; /* لون النص للروابط */
+    padding: 10px 15px; /* تباعد داخلي */
+    transition: background-color 0.3s ease; /* تأثير الانتقال */
+}
+
+.nav-link:hover {
+    background-color: #ffcc00; /* لون الخلفية عند التمرير */
+    color: #343a40; /* لون النص عند التمرير */
+}
+
+.dropdown-item {
+    color: #343a40; /* لون النص في القائمة المنسدلة */
+}
+
+.dropdown-item:hover {
+    background-color: #ffcc00; /* لون الخلفية عند التمرير في القائمة المنسدلة */
+    color: #343a40; /* لون النص عند التمرير في القائمة المنسدلة */
+}
+
+/* تكبير الأزرار عند التمرير */
+.navbar-toggler {
+    border: none; /* إزالة الحدود */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* إزالة التحديد عند التركيز */
+}
+
+.navbar-toggler-icon {
+    background-color: #ffcc00; /* لون الأيقونة */
+}
+
+
+.card {
+    border: none; /* إزالة الحدود */
+    border-radius: 10px; /* إضافة زوايا دائرية */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+    background-color: #ffffff; /* لون الخلفية */
+}
+
+.card-header {
+    background-color: #343a40; /* لون خلفية رأس البطاقة */
+    color: #ffffff; /* لون النص */
+    font-weight: bold; /* جعل النص سميك */
+    text-align: center; /* محاذاة النص في المنتصف */
+    padding: 15px; /* تباعد داخلي */
+    border-top-left-radius: 10px; /* زوايا دائرية في الجزء العلوي الأيسر */
+    border-top-right-radius: 10px; /* زوايا دائرية في الجزء العلوي الأيمن */
+}
+
+.form-control {
+    border: 1px solid #ced4da; /* لون الحدود */
+    border-radius: 5px; /* زوايا دائرية */
+    transition: border-color 0.3s ease; /* تأثير الانتقال */
+}
+
+.form-control:focus {
+    border-color: #343a40; /* تغيير لون الحدود عند التركيز */
+    box-shadow: 0 0 5px rgba(52, 58, 64, 0.5); /* إضافة ظل عند التركيز */
+}
+
+.btn-primary {
+    background-color: #343a40; /* لون الخلفية للزر */
+    border-color: #343a40; /* لون الحدود للزر */
+    padding: 10px 20px; /* تباعد داخلي للزر */
+    transition: background-color 0.3s ease; /* تأثير الانتقال */
+}
+
+.btn-primary:hover {
+    background-color: #ffcc00; /* لون الخلفية عند التمرير */
+    border-color: #ffcc00; /* لون الحدود عند التمرير */
+    color: #343a40; /* تغيير لون النص عند التمرير */
+}
+
+.invalid-feedback {
+    color: #dc3545; /* لون النص للأخطاء */
+}
+
+.form-check-label {
+    color: #343a40; /* لون النص لتذكير كلمة المرور */
+}
+
+
