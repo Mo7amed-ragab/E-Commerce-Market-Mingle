@@ -1,0 +1,87 @@
+/* Home Page Styles */
+.site-blocks-cover {
+    background-image: url(../images/hero_1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 700px;
+    position: relative;
+}
+.site-blocks-cover .container {
+    position: relative;
+    height: 700px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.site-blocks-cover .text-white {
+    color: #fff !important;
+}
+.site-blocks-cover .font-weight-light {
+    font-weight: 300 !important;
+}
+.site-blocks-cover h2 {
+    font-size: 3rem;
+}
+.site-blocks-cover .btn-primary {
+    background-color: #25a79a;
+    border-color: #25a79a;
+}
+.site-blocks-cover .btn-primary:hover {
+    background-color: #1e877e;
+    border-color: #1e877e;
+}
+
+.site-blocks-cover h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.site-blocks-cover .intro-text p {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Hero Section Content Positioning */
+.hero-content-position {
+    padding-top: 100px; /* Adjust as needed */
+    margin-right: 50px; /* Adjust as needed */
+}
+
+@media (max-width: 767.98px) {
+    .hero-content-position {
+        padding-top: 50px;
+        margin-right: 0;
+    }
+}
+
+.site-section {
+    padding: 2.5em 0;
+}
+.site-section-sm {
+    padding: 1.5em 0;
+}
+
+.site-blocks-1 .icon {
+    font-size: 3rem;
+    color: #25a79a;
+    margin-right: 1.5rem;
+}
+.site-blocks-1 .text h2 {
+    font-size: 1.5rem;
+}
+.site-blocks-1 .text p {
+    font-size: 0.9rem;
+}
+
+.slider::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}

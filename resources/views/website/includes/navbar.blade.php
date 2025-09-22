@@ -12,16 +12,47 @@
         </div>
 
         {{-- User and Language on the right --}}
-        <div class="col-auto order-2 order-md-2 d-flex align-items-center justify-content-end">
+        <div class="col-auto order-1 order-md-1 ">
           <div class="site-top-icons">
             <ul class="list-unstyled d-flex align-items-center m-0 p-0 justify-content-end" style="gap:10px;">
-              <li class="nav-item d-none d-lg-block"><a
-                  class="nav-link text-decoration-none px-2 text-muted small">{{ __('home.guest') . '_' . uniqid() }}</a>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center p-0 language-selector" href="#"
+                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  @php $currentLocale = app()->getLocale(); @endphp
+                  @if($currentLocale == 'ar')
+                    <img src="{{ asset('assets/images/sa.png') }}" alt="AR" class="rounded flag-icon"> <span
+                      class="lang-text">AR</span>
+                  @else
+                    <img src="{{ asset('assets/images/us.png') }}" alt="EN" class="rounded flag-icon"> <span
+                      class="lang-text">EN</span>
+                  @endif
+                </a>
+                <div class="dropdown-menu custom-anim lang-dropdown" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item d-flex align-items-center gap-2 @if($currentLocale == 'en') active-lang @endif"
+                    href="{{ LaravelLocalization::getLocalizedURL('en') }}">
+                    <img src="{{ asset('assets/images/us.png') }}" alt="EN" class="rounded flag-icon"> <span
+                      class="lang-text">EN</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center gap-2 @if($currentLocale == 'ar') active-lang @endif"
+                    href="{{ LaravelLocalization::getLocalizedURL('ar') }}">
+                    <img src="{{ asset('assets/images/sa.png') }}" alt="AR" class="rounded flag-icon"> <span
+                      class="lang-text">AR</span>
+                  </a>
+                </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center p-0 user-menu-toggle"
+                <a class="nav-link dropdown-toggle d-flex align-items-center p-0 user-profile-toggle"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User Menu">
-                  <span class="icon icon-person"></span>
+                  @auth
+                    <span class="icon icon-person me-2" style="font-size: 24px;"></span>
+                    <div class="d-flex flex-column align-items-start">
+                      <span class="fw-bold text-dark">{{ Auth::user()->name }}</span>
+                      <!-- <small class="text-muted">{{ ucfirst(Auth::user()->user_type) }}</small> -->
+                    </div>
+                  @else
+                    <span class="icon icon-person"></span>
+                  @endauth
                 </a>
                 <div class="dropdown-menu dropdown-menu-right custom-anim" style="min-width:180px;">
                   @if(auth()->user())
@@ -55,31 +86,7 @@
                   @endif
                 </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center p-0 language-selector" href="#"
-                  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  @php $currentLocale = app()->getLocale(); @endphp
-                  @if($currentLocale == 'ar')
-                    <img src="{{ asset('assets/images/sa.png') }}" alt="AR" class="rounded flag-icon"> <span
-                      class="lang-text">AR</span>
-                  @else
-                    <img src="{{ asset('assets/images/us.png') }}" alt="EN" class="rounded flag-icon"> <span
-                      class="lang-text">EN</span>
-                  @endif
-                </a>
-                <div class="dropdown-menu custom-anim lang-dropdown" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item d-flex align-items-center gap-2 @if($currentLocale == 'en') active-lang @endif"
-                    href="{{ LaravelLocalization::getLocalizedURL('en') }}">
-                    <img src="{{ asset('assets/images/us.png') }}" alt="EN" class="rounded flag-icon"> <span
-                      class="lang-text">EN</span>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center gap-2 @if($currentLocale == 'ar') active-lang @endif"
-                    href="{{ LaravelLocalization::getLocalizedURL('ar') }}">
-                    <img src="{{ asset('assets/images/sa.png') }}" alt="AR" class="rounded flag-icon"> <span
-                      class="lang-text">AR</span>
-                  </a>
-                </div>
-              </li>
+
             </ul>
           </div>
           {{-- No Hamburger menu here --}}
@@ -101,5 +108,4 @@
         </ul>
       </div>
     </nav>
-</header>
 </header>

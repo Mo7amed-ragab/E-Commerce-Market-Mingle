@@ -1,0 +1,67 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-right: 100px;
+}
+
+.nav-link {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #25a79a;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    background-color: #495057;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    color: #ffffff;
+}
+
+.dropdown-item:hover {
+    background-color: #25a79a;
+    color: white;
+}
+
+/* User Profile Toggle Styles */
+.user-profile-toggle {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.user-profile-toggle:hover {
+    background: none !important;
+    color: inherit;
+    box-shadow: none !important;
+}
+
+.user-profile-toggle .fw-bold {
+    line-height: 1.2;
+}
+
+.user-profile-toggle .text-muted {
+    font-size: 0.8rem;
+    line-height: 1;
+}
