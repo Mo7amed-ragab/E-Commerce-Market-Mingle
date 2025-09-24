@@ -290,6 +290,88 @@
     font-size: 0.98em !important;
 }
 
+/* Custom styles can go here */
+
+/* Pagination Styling */
+.site-block-27 .pagination {
+    justify-content: center;
+}
+
+.site-block-27 .page-item {
+    margin: 0 4px; /* Space between items */
+}
+
+.site-block-27 .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make them circular */
+    border: 1px solid #ccc;
+    color: #25262a; /* Default text color */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.site-block-27 .page-item.active .page-link {
+    background-color: #7971ea; /* Active background */
+    border-color: #7971ea;
+    color: #fff; /* Active text color */
+}
+
+.site-block-27 .page-item.disabled .page-link {
+    color: #8c92a0; /* Disabled text color */
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.site-block-27 .page-link:hover:not(.disabled) {
+    color: #7971ea;
+    border-color: #7971ea;
+}
+
+/* Custom arrows for prev/next */
+.site-block-27 .page-item:first-child .page-link,
+.site-block-27 .page-item:last-child .page-link {
+    border-radius: 50%; /* Ensure prev/next are also circular */
+}
+
+.site-block-27 .page-item .page-link[rel="prev"]::before {
+    font-family: "icomoon"; /* Assuming icomoon for arrows */
+    content: "\e314"; /* Left arrow icon code */
+    font-size: 16px; /* Adjust size if needed */
+    color: #25262a;
+}
+
+.site-block-27 .page-item .page-link[rel="next"]::before {
+    font-family: "icomoon"; /* Assuming icomoon for arrows */
+    content: "\e315"; /* Right arrow icon code */
+    font-size: 16px; /* Adjust size if needed */
+    color: #25262a;
+}
+
+.site-block-27 .page-item .page-link[rel="prev"],
+.site-block-27 .page-item .page-link[rel="next"] {
+    font-size: 0; /* Hide default text, show icon */
+    position: relative; /* For icon positioning */
+}
+
+.site-block-27 .page-item.active .page-link[rel="prev"]::before,
+.site-block-27 .page-item.active .page-link[rel="next"]::before {
+    color: #fff; /* White arrows on active background */
+}
+
+/* Top margin for Toastr to avoid sticking to the very top */
+#toast-container.toast-top-center {
+    top: 60px; /* Adjust this value as needed */
+}
+
+/* Custom styles can go here */
+
+/* Pagination Styling */
+
 @media (max-width: 991.98px) {
     /* Small devices (landscape phones, 576px and up) */
     .site-navbar-top .site-logo {

@@ -64,7 +64,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="#">
+                    <a class="block-2-item" href="{{ route('shop', ['sub_category_id' => $womenSubCategory->id]) }}">
                         <figure class="image">
                             <img src="{{asset('assets/images/women.jpg')}}" alt="" class="img-fluid">
                         </figure>
@@ -75,24 +75,24 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="#">
+                    <a class="block-2-item" href="{{ route('shop', ['sub_category_id' => $childrenSubCategory->id]) }}">
                         <figure class="image">
                             <img src="{{asset('assets/images/children.jpg')}}" alt="" class="img-fluid">
                         </figure>
                         <div class="text">
                             <span class="text-uppercase">{{ __('home.collections') }}</span>
-                            <h3> {{__('home.Children')}} </h3>
+                            <h3> {{__('home.Children')}}</h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="#">
+                    <a class="block-2-item" href="{{ route('shop', ['sub_category_id' => $menSubCategory->id]) }}">
                         <figure class="image">
                             <img src="{{asset('assets/images/men.jpg')}}" alt="" class="img-fluid">
                         </figure>
                         <div class="text">
                             <span class="text-uppercase">{{ __('home.collections') }}</span>
-                            <h3>{{__('home.Men')}} </h3>
+                            <h3>{{__('home.Men')}}</h3>
                         </div>
                     </a>
                 </div>
@@ -110,58 +110,24 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="nonloop-block-3 owl-carousel">
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{asset('assets/images/cloth_1.jpg')}}" alt="{{ __('home.tank_top') }}"
-                                        class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-3">
-                                    <h3><a href="#">{{ __('home.TankTop') }}</a></h3>
-                                    <p class="mb-0">{{ __('home.finding_perfect_tshirt') }}</p>
-                                    <p class="text-primary font-weight-bold">${{ __('home.price') }}</p>
+                        @foreach ($featuredProducts as $product)
+                            <div class="item">
+
+                                <div class="block-4 text-center">
+                                    <figure class="block-4-image">
+                                        <img src="{{ asset('assets/images/' . $product->image) }}" alt="{{ $product->title }}"
+                                            class="img-fluid">
+                                    </figure>
+                                    <div class="block-4-text p-3">
+                                        <h3><a
+                                                href="{{ route('shop-single', $product->id) }}">{{ Str::limit($product->title, 20) }}</a>
+                                        </h3>
+                                        <p class="mb-0">{{ Str::limit($product->description, 50) }}</p>
+                                        <p class="text-primary font-weight-bold">{{ $product->price }} EGP</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{asset('assets/images/shoe_1.jpg')}}" alt="{{ __('home.corater') }}"
-                                        class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-3">
-                                    <h3><a href="#">{{ __('home.corater') }}</a></h3>
-                                    <p class="mb-0">{{ __('home.finding_perfect_products') }}</p>
-                                    <p class="text-primary font-weight-bold">${{ __('home.price') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{asset('assets/images/cloth_2.jpg')}}" alt="{{ __('home.polo_shirt') }}"
-                                        class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-3">
-                                    <h3><a href="#">{{ __('home.polo_shirt') }}</a></h3>
-                                    <p class="mb-0">{{ __('home.finding_perfect_products') }}</p>
-                                    <p class="text-primary font-weight-bold">${{ __('home.price') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{asset('assets/images/cloth_3.jpg')}}" alt="{{ __('home.tshirt_mockup') }}"
-                                        class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-3">
-                                    <h3><a href="#">{{ __('home.tshirt_mockup') }}</a></h3>
-                                    <p class="mb-0">{{ __('home.finding_perfect_products') }}</p>
-                                    <p class="text-primary font-weight-bold">${{ __('home.price') }}</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

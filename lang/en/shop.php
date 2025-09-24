@@ -1,8 +1,8 @@
 <?php
 return [
     "Home" => "Home",
-    "Shop" =>"Shop",
-    'title' =>'Shop',
+    "Shop" => "Shop",
+    'title' => 'Shop',
     "shop_all" => "Shop All",
     "latest" => "Latest",
     "men" => "Men",
@@ -27,14 +27,15 @@ return [
     "children_count" => "Children (2,124)",
     "filter_by_price" => "Filter by Price",
     "size" => "Size",
-    "small_size" => "Small (2,319)",
-    "medium_size" => "Medium (1,282)",
-    "large_size" => "Large (1,392)",
+    "small_size" => "Small",
+    "medium_size" => "Medium",
+    "large_size" => "Large",
+    "X-Large" => "X-Large",
     "color" => "Color",
-    "red_color" => "Red (2,429)",
-    "green_color" => "Green (2,298)",
-    "blue_color" => "Blue (1,075)",
-    "purple_color" => "Purple (1,075)",
+    "red_color" => "Red",
+    "green_color" => "Green",
+    "blue_color" => "Blue",
+    "purple_color" => "Purple",
     "collections" => "Collections"
 
 ];

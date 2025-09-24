@@ -9,26 +9,26 @@
 
           <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
-              <li><a href="#">{{__('footer.sell_online')}}</a></li>
-              <li><a href="#">{{__('footer.features')}}</a></li>
-              <li><a href="#">{{__('footer.shopping_cart')}}</a></li>
-              <li><a href="#">{{__('footer.store_builder')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.sell_online')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.features')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.shopping_cart')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.store_builder')}}</a></li>
             </ul>
           </div>
 
           <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
-              <li><a href="#">{{__('footer.mobile_commerce')}}</a></li>
-              <li><a href="#">{{__('footer.dropshipping')}}</a></li>
-              <li><a href="#">{{__('footer.website_development')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.mobile_commerce')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.dropshipping')}}</a></li>
+              <li><a href="{{ route('home') }}">{{__('footer.website_development')}}</a></li>
             </ul>
           </div>
 
           <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
-              <li><a href="#">{{ __('footer.point_of_sale') }}</a></li>
-              <li><a href="#">{{ __('footer.hardware') }}</a></li>
-              <li><a href="#">{{ __('footer.software') }}</a></li>
+              <li><a href="{{ route('home') }}">{{ __('footer.point_of_sale') }}</a></li>
+              <li><a href="{{ route('home') }}">{{ __('footer.hardware') }}</a></li>
+              <li><a href="{{ route('home') }}">{{ __('footer.software') }}</a></li>
             </ul>
           </div>
         </div>

@@ -2,25 +2,34 @@
 
 use Illuminate\Support\Facades\Route;
 // website controller
-use App\Http\Controllers\website\{MainController, ProductController};
+use App\Http\Controllers\website\{MainController, ProductController, CartController};
 // Dashboard controller
-use App\Http\Controllers\dashboard\{DashboardMainController,CategoryController,SubCategoryController,UserController, ProductController as DashProdContr};
+use App\Http\Controllers\dashboard\{DashboardMainController, CategoryController, SubCategoryController, UserController, ProductController as DashProdContr};
 // Auth controller
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
 // Define website routes
-Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-],
- function () {
-    Route::get('/', [MainController::class, 'home'])->name('home');
-    Route::get('/about', [MainController::class, 'about'])->name('about');
-    Route::get('/contactUs', [MainController::class, 'contactUs'])->name('contactUs');
-    Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    ],
+    function () {
+        Route::get('/', [MainController::class, 'home'])->name('home');
+        Route::get('/about', [MainController::class, 'about'])->name('about');
+        Route::get('/contactUs', [MainController::class, 'contactUs'])->name('contactUs');
+        Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
+        Route::get('/shop-single/{id}', [ProductController::class, 'shopsingle'])->name('shop-single');
+
+        // Cart Routes
+        Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+        Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+        Route::get('/cart-item-count', [CartController::class, 'getCartItemCount'])->name('cart.count');
+        Route::get('/cart-content-ajax', [CartController::class, 'getCartContentAjax'])->name('cart.content.ajax');
+    }
+);
 
 // Define dashboard routes
 Route::group([
@@ -37,20 +46,20 @@ Route::group([
         Route::get('/user/admins', [UserController::class, 'adminsIndex'])->name('users.admins');
 
         Route::resource('/categories', CategoryController::class);
-        Route::get('/category/delete',[CategoryController::class, 'delete'])->name('categories.delete');
-        Route::get('/category/restore/{id}',[CategoryController::class, 'restore'])->name('categories.restore');
-        Route::delete('/category/forecDelete/{id}',[CategoryController::class, 'forceDelete'])->name('categories.forceDelete');
+        Route::get('/category/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+        Route::get('/category/restore/{id}', [CategoryController::class, 'restore'])->name('categories.restore');
+        Route::delete('/category/forecDelete/{id}', [CategoryController::class, 'forceDelete'])->name('categories.forceDelete');
 
-       Route::resource('subcategories', SubCategoryController::class);
-       Route::get('/subcategory/trash',[SubCategoryController::class, 'trash'])->name('subcategories.trash');
-       Route::get('/subcategory/restore/{id}', [SubCategoryController::class, 'restore'])->name('subcategories.restore');
-       Route::delete('/subcategory/forceDelete/{id}', [SubCategoryController::class,'forceDelete'])->name('subcategories.forceDelete');
+        Route::resource('subcategories', SubCategoryController::class);
+        Route::get('/subcategory/trash', [SubCategoryController::class, 'trash'])->name('subcategories.trash');
+        Route::get('/subcategory/restore/{id}', [SubCategoryController::class, 'restore'])->name('subcategories.restore');
+        Route::delete('/subcategory/forceDelete/{id}', [SubCategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
 
-       //  routing Products
-       Route::resource('/products', DashProdContr::class);
-       Route::get('/product/delete',[DashProdContr::class, 'delete'])->name('products.delete');
-       Route::get('/product/restore/{id}', [DashProdContr::class, 'restore'])->name('products.restore');
-       Route::delete('/product/forceDelete/{id}', [DashProdContr::class,'forceDelete'])->name('products.forceDelete');
+        //  routing Products
+        Route::resource('/products', DashProdContr::class);
+        Route::get('/product/delete', [DashProdContr::class, 'delete'])->name('products.delete');
+        Route::get('/product/restore/{id}', [DashProdContr::class, 'restore'])->name('products.restore');
+        Route::delete('/product/forceDelete/{id}', [DashProdContr::class, 'forceDelete'])->name('products.forceDelete');
     });
 
 });

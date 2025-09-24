@@ -12,7 +12,7 @@ return [
             'name' => 'Sara Ayman',
             'position' => 'Team Leader',
             'description' => 'Led a team in developing and deploying an E-commerce platform using PHP Laravel, managing the project lifecycle, contributing to development, code review, and project management.',
-            'image' => 'girl_profile (1).jpg',
+            'image' => 'boy_profile.jpg',
         ],
         [
             'name' => 'Moheb Gamal',
@@ -35,7 +35,7 @@ return [
         [
             'name' => 'Abdelrahman Saeed',
             'position' => 'Backend Developer',
-            'description'=> ' I am a Backend Developer with expertise in PHP and Laravel, dedicated to creating powerful and scalable web applications. My responsibilities include developing efficient server-side logic, managing and optimizing databases, and integrating APIs seamlessly. I am committed to delivering clean, high-performance code that improves the overall security, functionality, and efficiency of the applications I work on',
+            'description' => ' I am a Backend Developer with expertise in PHP and Laravel, dedicated to creating powerful and scalable web applications. My responsibilities include developing efficient server-side logic, managing and optimizing databases, and integrating APIs seamlessly. I am committed to delivering clean, high-performance code that improves the overall security, functionality, and efficiency of the applications I work on',
             'image' => 'boy_profile.jpg',
         ]
     ],

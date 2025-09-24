@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\SubCategory;
+use Faker\Factory as Faker;
 
 class ProductSeeder extends Seeder
 {
@@ -12,39 +15,29 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $product = Product::create([
-            'title'           => 'Blue T-shirt',
-            'image'           => 'cloth_3.jpg',
-            'price'           => 100.5,
-            'sub_category_id' => 1,
-        ]);
+        $faker = Faker::create();
+        $subCategories = SubCategory::all();
 
-        $product = Product::create([
-            'title'           => 'Shoe',
-            'image'           => 'shoe_1.jpg',
-            'price'           => 210.5,
-            'sub_category_id' => 3,
-        ]);
+        if ($subCategories->isEmpty()) {
+            // Handle case where no subcategories exist
+            // You might want to create some default subcategories here
+            echo "No subcategories found. Please create some subcategories first.\n";
+            return;
+        }
 
-        $product = Product::create([
-            'title'           => 'White Blouse',
-            'image'           => 'cloth_1.jpg',
-            'price'           => 150,
-            'sub_category_id' => 4,
-        ]);
-
-        $product = Product::create([
-            'title'           => 'Suit',
-            'image'           => 'cloth_2.jpg',
-            'price'           => 450,
-            'sub_category_id' => 3,
-        ]);
-
-        $product = Product::create([
-            'title'           => 'Stock CLothes',
-            'image'           => 'cloth_3.jpg',
-            'price'           => 200,
-            'sub_category_id' => 5,
-        ]);
+        for ($i = 0; $i < 20; $i++) {
+            Product::create([
+                'title' => $faker->sentence(3),
+                'image' => 'cloth_' . $faker->numberBetween(1, 3) . '.jpg', // Assuming cloth_1.jpg, cloth_2.jpg, cloth_3.jpg exist
+                'description' => $faker->paragraph(3),
+                'price' => $faker->randomFloat(2, 10, 500),
+                'available_quantity' => $faker->numberBetween(1, 100),
+                'size' => $faker->randomElement(['Small', 'Medium', 'Large', 'X-Large']),
+                'color' => $faker->randomElement(['Red', 'Green', 'Blue', 'Black', 'White']),
+                'sub_category_id' => $faker->randomElement($subCategories->pluck('id')->toArray()),
+                'create_user_id' => null, // Assuming nullable or handle user creation if needed
+                'update_user_id' => null, // Assuming nullable or handle user creation if needed
+            ]);
+        }
     }
 }

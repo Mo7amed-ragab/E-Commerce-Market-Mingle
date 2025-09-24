@@ -22,6 +22,9 @@
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  {{-- Toastr CSS --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
   {{-- ar --}}
   @if(app()->getLocale() == 'ar')
     <link rel="stylesheet" href="{{asset('assets/css/rtl.css')}}">
@@ -53,6 +56,47 @@
   <script src="{{asset('assets/js/aos.js')}}"></script>
   <script src="{{asset('assets/js/main.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script> {{-- Custom scripts --}}
+
+  {{-- Toastr JS --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  @stack('scripts')
+
+  <script>
+    $(document).ready(function () {
+      // Configure Toastr options
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right", // Reverted to bottom-right
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      };
+
+      // Function to update cart item count in the navbar (global)
+      window.updateCartItemCount = function () {
+        $.ajax({
+          type: "GET",
+          url: "{{ route('cart.count') }}",
+          success: function (response) {
+            $('#cart-item-count').text(response.count);
+          },
+          error: function (response) {
+            console.log('Error fetching cart item count:', response);
+          }
+        });
+      };
+
+      // Initial update of cart count on page load
+      updateCartItemCount();
+    });
+  </script>
 </body>
 
 </html>

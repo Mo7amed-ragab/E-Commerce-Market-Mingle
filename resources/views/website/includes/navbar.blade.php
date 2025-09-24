@@ -16,6 +16,13 @@
           <div class="site-top-icons">
             <ul class="list-unstyled d-flex align-items-center m-0 p-0 justify-content-end" style="gap:10px;">
 
+              <li class="pt-2">
+                <a href="{{ route('cart.view') }}" class="site-cart">
+                  <span class="icon icon-shopping_cart"></span>
+                  <span id="cart-item-count" class="count">{{ $cartItemCount }}</span>
+                </a>
+              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center p-0 language-selector" href="#"
                   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,6 +93,7 @@
                   @endif
                 </div>
               </li>
+
 
             </ul>
           </div>

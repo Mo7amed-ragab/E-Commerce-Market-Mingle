@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\SubCategory;
+use App\Models\Category;
 
 class SubCategorySeeder extends Seeder
 {
@@ -12,35 +13,32 @@ class SubCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $subCategory = SubCategory::create([
-            'title' => 'winter',
-            'category_id' => 2,
-            'create_user_id' => 1
-        ]);
+        // Ensure parent categories exist or create them
+        $menCategory = Category::firstOrCreate(['title' => 'Men']);
+        $womenCategory = Category::firstOrCreate(['title' => 'Women']);
+        $childrenCategory = Category::firstOrCreate(['title' => 'Children']);
 
-        $subCategory = SubCategory::create([
-            'title' => 'summer',
-            'category_id' => 3,
-        ]);
+        // Add or update SubCategories for Men, Women, Children
+        SubCategory::firstOrCreate(
+            ['title' => 'Men', 'category_id' => $menCategory->id],
+            ['create_user_id' => 1]
+        );
+        SubCategory::firstOrCreate(
+            ['title' => 'Women', 'category_id' => $womenCategory->id],
+            ['create_user_id' => 1]
+        );
+        SubCategory::firstOrCreate(
+            ['title' => 'Children', 'category_id' => $childrenCategory->id],
+            ['create_user_id' => 1]
+        );
 
-        $subCategory = SubCategory::create([
-            'title' => 'autumn',
-            'category_id' => 1,
-        ]);
+        // You can keep or remove the existing dummy subcategories if you wish
+        SubCategory::firstOrCreate(['title' => 'winter', 'category_id' => Category::firstOrCreate(['title' => 'Season Wear'])->id, 'create_user_id' => 1]);
+        SubCategory::firstOrCreate(['title' => 'summer', 'category_id' => Category::firstOrCreate(['title' => 'Season Wear'])->id, 'create_user_id' => 1]);
+        SubCategory::firstOrCreate(['title' => 'autumn', 'category_id' => Category::firstOrCreate(['title' => 'Season Wear'])->id, 'create_user_id' => 1]);
+        SubCategory::firstOrCreate(['title' => 'anything', 'category_id' => Category::firstOrCreate(['title' => 'General'])->id, 'create_user_id' => 1]);
+        SubCategory::firstOrCreate(['title' => 'nothing', 'category_id' => Category::firstOrCreate(['title' => 'General'])->id, 'create_user_id' => 1]);
+        SubCategory::firstOrCreate(['title' => 'everyone', 'category_id' => Category::firstOrCreate(['title' => 'General'])->id, 'create_user_id' => 1]);
 
-        $subCategory = SubCategory::create([
-            'title' => 'anything',
-            'category_id' => 5,
-        ]);
-
-        $subCategory = SubCategory::create([
-            'title' => 'nothing',
-            'category_id' => 2,
-        ]);
-
-        $subCategory = SubCategory::create([
-            'title' => 'everyone',
-            'category_id' => 3,
-        ]);
     }
 }
